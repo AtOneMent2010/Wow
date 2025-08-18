@@ -114,15 +114,15 @@ else:
             with c4:
                 b1,b2 = st.columns(2)
                 with b1:
-                    if st.button(f"응원 ❤️ {hearts}", key=f"h_{pid}"):
-                        with get_con() as con:
-                            con.execute("UPDATE posts SET hearts=hearts+1 WHERE id=?", (pid,))
-                        st.experimental_rerun()
+                   if st.button(f"응원 ❤️ {hearts}", key=f"heart_{pid}"):
+    with get_con() as con:
+        con.execute("UPDATE posts SET hearts=hearts+1 WHERE id=?", (pid,))
+    st.rerun()
                 with b2:
-                    if st.button("신고 🚩", key=f"f_{pid}"):
-                        with get_con() as con:
-                            con.execute("UPDATE posts SET is_flagged=1 WHERE id=?", (pid,))
-                        st.warning("신고되었습니다.")
+                   if st.button("신고 🚩", key=f"flag_{pid}"):
+    with get_con() as con:
+        con.execute("UPDATE posts SET is_flagged=1 WHERE id=?", (pid,))
+    st.warning("신고되었습니다. 관리자 검토가 필요합니다.")
             st.write(pcontent)
             if crisis_detected(pcontent):
                 st.error("⚠️ 위기 신호 감지. 112 / 1393에 즉시 연락하세요.")
@@ -145,17 +145,17 @@ else:
             with t1:
                 new_c = st.text_input("응원/댓글 남기기", key=f"c_{pid}", placeholder="따뜻한 말 한마디가 큰 힘이 됩니다.")
             with t2:
-                if st.button("댓글 등록", key=f"cb_{pid}"):
-                    if not new_c.strip():
-                        st.warning("댓글 내용을 입력해주세요.")
-                    else:
-                        with get_con() as con:
-                            con.execute(
-                                "INSERT INTO comments(post_id,created_at,role,nickname,is_anonymous,content) VALUES (?,?,?,?,?,?)",
-                                (pid, datetime.now().isoformat(timespec="seconds"), role, nickname or None, 1, new_c.strip())
-                            )
-                        st.success("댓글이 등록되었습니다.")
-                        st.experimental_rerun()
+               if st.button("댓글 등록", key=f"cbtn_{pid}"):
+    if not new_c.strip():
+        st.warning("댓글 내용을 입력해주세요.")
+    else:
+        with get_con() as con:
+            con.execute(
+                "INSERT INTO comments(post_id, created_at, role, nickname, is_anonymous, content) VALUES (?, ?, ?, ?, ?, ?)",
+                (pid, datetime.now().isoformat(timespec="seconds"), role, nickname.strip() if nickname else None, 1 if is_anon else 0, new_c.strip())
+            )
+        st.success("댓글이 등록되었습니다.")
+        st.rerun()
 
 st.markdown("---")
 st.caption("© FailForward – 교육용 MVP. 위기 시 112 / 1393 / 지역 정신건강복지센터")
