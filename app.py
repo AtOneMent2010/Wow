@@ -195,7 +195,7 @@ if f_role != "전체":
     query += " AND role=?"
 
             # 위기 안내
-            if crisis_detected(pcontent):
+        if crisis_detected(pcontent):
                 st.error("⚠️ 위기 신호가 감지되었습니다. 즉시 도움을 요청하세요. 112 / 자살예방상담전화 1393(24시간)")
                 st.info("교내 상담실/담임/보호자와 상의하세요. 당신은 혼자가 아닙니다.")
 
