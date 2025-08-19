@@ -226,7 +226,7 @@
 - if f_role != "전체":
 -     query += " AND role=?"
 -diff --git a/app.py b/app.py
--index 6c16cf0c7eb3af84a06932b48e12e1c152170da0..3d1a513bddfe853c28f6318db24339acdeb2b6a7 100644
+-index6c16cf0c7eb3af84a06932b48e12e1c152170da0..3d1a513bddfe853c28f6318db24339acdeb2b6a7 100644
 ---- a/app.py
 -+++ b/app.py
 -@@ -174,47 +241,60 @@ else:
