@@ -40,15 +40,15 @@ def init_db():
             content TEXT NOT NULL,
             FOREIGN KEY(post_id) REFERENCES posts(id) ON DELETE CASCADE
         """)
-       con.execute("""
-       CREATE TABLE IF NOT EXISTS users (
-           id INTEGER PRIMARY KEY AUTOINCREMENT,
-           username TEXT UNIQUE NOT NULL,
-           password TEXT NOT NULL,
-           role TEXT NOT NULL,
-           nickname TEXT
-       )
-       """)
+        con.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            role TEXT NOT NULL,
+            nickname TEXT
+        )
+        """)
 init_db()
 
 def get_con():
