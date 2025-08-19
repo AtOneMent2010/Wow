@@ -200,8 +200,7 @@ if crisis_detected(pcontent):
                 st.info("교내 상담실/담임/보호자와 상의하세요. 당신은 혼자가 아닙니다.")
 
             # 댓글 출력
-            with get_con() as con:
-comments = con.execute(
+            with get_con() as con:                comments = con.execute(
                     "SELECT id, created_at, role, nickname, is_anonymous, content "
                     "FROM comments WHERE post_id=? ORDER BY id ASC",
                     (pid,)
