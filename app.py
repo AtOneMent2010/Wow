@@ -201,7 +201,7 @@ if crisis_detected(pcontent):
 
             # 댓글 출력
             with get_con() as con:
-                comments = con.execute(
+comments = con.execute(
                     "SELECT id, created_at, role, nickname, is_anonymous, content "
                     "FROM comments WHERE post_id=? ORDER BY id ASC",
                     (pid,)
