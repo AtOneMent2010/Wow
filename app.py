@@ -567,3 +567,6 @@
 +st.markdown("---")
 +st.caption("© FailForward – 교육용 MVP. 위기 시 112 / 1393 / 지역 정신건강복지센터")
 +
+ 
+EOF
+)
