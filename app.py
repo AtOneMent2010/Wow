@@ -1,4 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
 diff --git a/app.py b/app.py
 index de7699da21200cea749b40156bcf6b269a3fef73..7c6efb63b30a1bb820095295c15a4ddaebb95a65 100644
 --- a/app.py
@@ -579,6 +578,3 @@ index de7699da21200cea749b40156bcf6b269a3fef73..7c6efb63b30a1bb820095295c15a4dda
 +st.markdown("---")
 +st.caption("© FailForward – 교육용 MVP. 위기 시 112 / 1393 / 지역 정신건강복지센터")
 +
- 
-EOF
-)
