@@ -16,7 +16,7 @@ st.set_page_config(page_title="FailForward – 실패 프레임 전환", page_ic
 # ---------- DB ----------
 def init_db():
     with sqlite3.connect(DB_PATH) as con:
-        con.execute("""
+    con.execute("""
         CREATE TABLE IF NOT EXISTS posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             created_at TEXT NOT NULL,
